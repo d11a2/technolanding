@@ -1,0 +1,203 @@
+/* synth pad section */
+#sp {
+  width: 22.75em;
+  height: 25em;
+  margin: 0;
+  padding: 2em;
+  float: left;
+}
+
+#sp div {
+  width: 10em;
+  height: 10em;
+  margin-bottom: 1em;
+  display: inline-block;
+  background: #fca13f;
+  box-shadow: rgba(0, 0, 0, 0.0980392) -6px 6px 0px 0px inset;
+}
+
+#sp div:nth-child(odd) {
+  margin-right: 1em;
+}
+
+#sp div:active {
+  background: #248aaf;
+}
+
+/* control section */
+#cp {
+  height: 25em;
+  margin: 0;
+  padding: 2em 2em 2em 0;
+  float: left;
+}
+
+#cp div {
+  width: 10em;
+  padding: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  border: solid 2px #ccc;
+}
+
+h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+#cp h3 {
+  position: relative;
+  top: -10px;
+  font-size: 16px;
+}
+
+#cp div input[type = 'range'] {
+  position: relative;
+  top: 2px;
+}
+
+#cp button {
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 0.25em;
+  font-size: 1.25em;
+  border: none;
+  background: #fca13f;
+  box-shadow: rgba(0, 0, 0, 0.0980392) -3px 3px 0px 0px inset;
+}
+
+#cp button[value = true] {
+  background: #248aaf;
+  color: white;
+}
+
+.faded {
+  opacity: 0.15;
+}
+
+.p {
+  clear: both;
+  text-align: center;
+}
+
+.audio-player__controls-wrapper {
+  position: relative;
+  height: 50px;
+  top: -50%;
+}
+
+.audio-player__controls {
+
+  &-wrapper:hover & {
+    visibility: visible;
+
+  }
+
+  &--visible {
+    visibility: visible;
+  }
+
+  &:hover {
+    visibility: visible;
+  }
+
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.audio-player__prev-btn,
+.audio-player__play-btn,
+.audio-player__next-btn {
+  display: block;
+  width: 80px;
+  height: 50px;
+}
+
+.visualizer {
+  display: block;
+  /*width: 100%;
+  height: 100%;*/
+  position: relative;
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.audio-player {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+
+}
+
+.audio-player__playlist {
+
+  &--visible {
+    display: block;
+  }
+
+  display: none;
+
+  background-color: white;
+
+  &-item {
+    background-color: transparent;
+    display: block;
+  }
+
+}
+
+
+
+.volume-slider {
+  position: relative;
+  height: 20px;
+  width: 90px;
+  overflow: hidden;
+
+  &__handle {
+    position: absolute;
+    display: block;
+    right: 0;
+
+    border-radius: 50%;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    background-color: rebeccapurple;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 90px;
+      height: 5px;
+      background-color: black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+
+      width: 90px;
+      height: 5px;
+      background-color: teal;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+  }
+}

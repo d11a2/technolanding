@@ -1,0 +1,22 @@
+$lockDiameter: $crossLockDiameter + 10px;
+.lock-container {
+  height: 100%;
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  z-index: 400;
+}
+
+.lock {
+  width: $lockDiameter;
+  height: $lockDiameter;
+  border-radius: 50%;
+  background-color: $playerColor;
+  color: red;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}

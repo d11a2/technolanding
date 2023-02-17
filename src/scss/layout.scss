@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none; /* Убираем маркеры */
+  }
+}
+
+button {
+  padding: 0;
+}
+
+.body-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 10px;
+  border: 2px solid teal;
+}

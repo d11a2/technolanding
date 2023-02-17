@@ -1,0 +1,7 @@
+$doorHeight: 400px;
+$crossLockDiameter: 100px;
+$playerColor: black;
+@import "layout";
+@import "components/*.scss";
+@import "modifiers";
+

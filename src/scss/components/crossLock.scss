@@ -1,0 +1,221 @@
+@use "sass:math";
+
+$shutterHeight: calc($crossLockDiameter / 4);
+$crossLockAnimationDuration: 0.3s;
+$crossLockTopPosition: calc($doorHeight / 2);
+$crossLockColor: $playerColor;
+
+.cross-lock {
+  width: $crossLockDiameter;
+  height: $crossLockDiameter;
+  background-color: $crossLockColor;
+  bottom: $crossLockDiameter;
+  border-radius: 50%;
+
+  &__container {
+    position: absolute;
+    left: 50%;
+    top: $crossLockTopPosition;
+    transform: translate(-50%, -50%);
+  }
+
+  &__outer {
+    position: relative;
+    height: calc($shutterHeight * 4);
+    top: calc($shutterHeight * math.sin(45deg));
+    left: 50%;
+    width: 0;
+    transform: rotate(90deg);
+  }
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__plank {
+    position: absolute;
+    height: $shutterHeight;
+    width: 100vw;
+    background-color: $crossLockColor;
+    box-shadow: 0 0 18px red;
+  }
+}
+
+.plank-left-top {
+  top: 100%;
+  transform-origin: left top;
+  transform: rotate(90deg);
+}
+
+.plank-left-bottom {
+  top: 50%;
+  left: 50%;
+  transform-origin: left top;
+  transform: rotate(45deg);
+}
+
+.plank-right-top {
+  top: -100%;
+  transform-origin: left bottom;
+  transform: rotate(-90deg);
+}
+
+.plank-right-bottom {
+  top: 25%;
+  left: 50%;
+  transform-origin: left bottom;
+  transform: rotate(-45deg);
+}
+
+.plank--animated {
+  transform: rotate(0deg);
+}
+
+
+.plank-left-top--animate {
+  animation-duration: $crossLockAnimationDuration;
+  animation-name: open-plank-left-top;
+
+  @keyframes open-plank-left-top {
+    from {
+      transform: rotate(90deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  &--reverse {
+    animation-duration: $crossLockAnimationDuration;
+    animation-name: close-plank-left-top;
+
+    @keyframes close-plank-left-top {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+}
+
+.plank-left-bottom--animate {
+  animation-duration: $crossLockAnimationDuration;
+  animation-name: open-plank-left-bottom;
+
+  @keyframes open-plank-left-bottom {
+    from {
+      transform: rotate(45deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  &--reverse {
+    animation-duration: $crossLockAnimationDuration;
+    animation-name: close-plank-left-bottom;
+
+    @keyframes close-plank-left-bottom {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+
+.plank-right-top--animate {
+  animation-duration: $crossLockAnimationDuration;
+  animation-name: open-plank-right-top;
+
+  @keyframes open-plank-right-top {
+    from {
+      transform: rotate(-90deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  &--reverse {
+    animation-duration: $crossLockAnimationDuration;
+    animation-name: close-plank-right-top;
+
+    @keyframes close-plank-right-top {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+.plank-right-bottom--animate {
+  animation-duration: $crossLockAnimationDuration;
+  animation-name: open-plank-right-bottom;
+
+  @keyframes open-plank-right-bottom {
+    from {
+      transform: rotate(-45deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  &--reverse {
+    animation-duration: $crossLockAnimationDuration;
+    animation-name: close-plank-right-bottom;
+
+    @keyframes close-plank-right-bottom {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.cross-lock__container--animate {
+  animation-duration: $crossLockAnimationDuration;
+  animation-name: lock-container-open;
+
+  @keyframes lock-container-open {
+    from {
+      top: $crossLockTopPosition;
+    }
+    to {
+      top: $doorHeight + calc($crossLockDiameter / 2);;
+    }
+  }
+
+  &--reverse {
+    animation-duration: $crossLockAnimationDuration;
+    animation-name: lock-container-close;
+
+    @keyframes lock-container-close {
+      from {
+        top: $doorHeight + calc($crossLockDiameter / 2);;
+      }
+      to {
+        top: $crossLockTopPosition;
+      }
+    }
+  }
+}
+
+.cross-lock__container--animated {
+  top: $doorHeight + calc($crossLockDiameter / 2);
+}

@@ -1,0 +1,90 @@
+$doorBitWidth: 100%;
+$doorBitHeight: 20%;
+
+$baseAnimationDuration: 1s;
+$directions: left, right;
+
+.door-container {
+  width: 100vw;
+  height: $crossLockDiameter + $doorHeight;
+
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.door {
+  position: relative;
+  height: $doorHeight;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+@each $direction in $directions {
+  .door-#{$direction} {
+    flex: 1;
+    @for $i from 1 through 5 {
+      .door-#{$direction}__item--open:nth-child(#{$i}) {
+        animation-delay: calc($i * 100ms);
+      }
+    }
+    @for $i from 1 through 5 {
+      .door-#{$direction}__item--close:nth-child(#{$i}) {
+        animation-delay: calc((6 - $i) * 100ms);
+      }
+    }
+
+    &__item {
+      width: $doorBitWidth;
+      height: $doorBitHeight;
+      background-color: $playerColor;
+      border: 1px solid black;
+
+      position: relative;
+      animation-duration: $baseAnimationDuration;
+
+      box-shadow: inset 0 0 18px red;
+
+      &--opened {
+        #{$direction}: - $doorBitWidth;
+      }
+
+      &--closed {
+        #{$direction}: 0;
+      }
+
+
+      &--open {
+        animation-name: dooropen#{$direction};
+
+        @keyframes dooropen#{$direction} {
+          from {
+            #{$direction}: 0;
+          }
+          to {
+            #{$direction}: - $doorBitWidth;
+          }
+        }
+      }
+
+      &--close {
+        animation-name: doorclose#{$direction};
+
+        @keyframes doorclose#{$direction} {
+          from {
+            #{$direction}: - $doorBitWidth;
+          }
+          to {
+            #{$direction}: 0;
+          }
+        }
+      }
+
+    }
+  }
+}

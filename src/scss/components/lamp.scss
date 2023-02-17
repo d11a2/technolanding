@@ -1,0 +1,50 @@
+$lampColor: red;
+$lampDiameter: 30px;
+$bodyColor: black;
+$lampSwitchSpeed: .5s;
+.lamp-container {
+
+}
+
+.lamp {
+  width: $lampDiameter;
+  height: $lampDiameter;
+  background-color: $lampColor;
+  border-radius: 50%;
+  position: relative;
+
+  box-shadow: inset 0 0 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: "";
+    background-color: $bodyColor;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  &__inner {
+    background-color: $bodyColor;
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: all $lampSwitchSpeed;
+  }
+  &__inner-circle {
+    width: calc($lampDiameter / 2);
+    height: calc($lampDiameter / 2);
+    border-radius: 50%;
+    background-color: black;
+    box-shadow: 0 0 3px black;
+  }
+}
